@@ -29,6 +29,7 @@ export function CreateEventScreen() {
       });
       navigate(`/events/${result.id}`);
     } catch (err: any) {
+      console.error("Event creation failed:", err);
       setError("イベントの作成に失敗しました");
     } finally {
       setLoading(false);

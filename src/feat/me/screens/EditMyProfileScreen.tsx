@@ -52,6 +52,7 @@ export function EditMyProfileScreen() {
       });
       navigate("/me/profile");
     } catch (err: any) {
+      console.error("Profile update failed:", err);
       setError("プロフィールの保存に失敗しました");
     } finally {
       setSaving(false);

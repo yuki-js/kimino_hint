@@ -22,6 +22,7 @@ export function ProfileDetailScreen() {
         });
         setProfile(data);
       } catch (err) {
+        console.error("Failed to load profile:", err);
         setError("プロフィールの取得に失敗しました");
       } finally {
         setLoading(false);

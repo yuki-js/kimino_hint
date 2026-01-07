@@ -17,6 +17,7 @@ export function ReceivedFriendshipsScreen() {
         const data = await apis.friendships().listReceivedFriendships();
         setFriendships(data);
       } catch (err) {
+        console.error("Failed to load friendships:", err);
         setError("プロフィールカードの取得に失敗しました");
       } finally {
         setLoading(false);

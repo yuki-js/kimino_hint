@@ -22,6 +22,7 @@ export function EventLiveScreen() {
         });
         setAttendees(data);
       } catch (err) {
+        console.error("Failed to load attendees:", err);
         setError("参加者情報の取得に失敗しました");
       } finally {
         setLoading(false);

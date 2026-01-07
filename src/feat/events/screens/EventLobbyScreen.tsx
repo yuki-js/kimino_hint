@@ -25,6 +25,7 @@ export function EventLobbyScreen() {
         setEvent(eventData);
         setAttendees(attendeesData);
       } catch (err) {
+        console.error("Failed to load event:", err);
         setError("イベント情報の取得に失敗しました");
       } finally {
         setLoading(false);

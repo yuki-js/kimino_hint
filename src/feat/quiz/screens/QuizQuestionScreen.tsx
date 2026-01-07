@@ -14,6 +14,7 @@ export function QuizQuestionScreen() {
 
   const handleAnswer = (choiceIndex: number) => {
     // TODO: Save answer to state/API
+    console.log("Selected choice:", choiceIndex);
     navigate(`/events/${eventId}/quiz/${questionNo}/answer`);
   };
 
