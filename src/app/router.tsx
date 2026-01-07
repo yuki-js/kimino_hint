@@ -21,6 +21,7 @@ import { QuizResultScreen } from '../feat/quiz/screens/QuizResultScreen';
 import { QrHubScreen } from '../feat/qr/screens/QrHubScreen';
 import { QrProfileScreen } from '../feat/qr/screens/QrProfileScreen';
 import { QrScanScreen } from '../feat/qr/screens/QrScanScreen';
+import { legacyRoutes } from '../compat/legacyRoutes';
 
 export function AppRouter() {
   return (
@@ -60,6 +61,11 @@ export function AppRouter() {
       <Route path="/qr" element={<QrHubScreen />} />
       <Route path="/qr/profile" element={<QrProfileScreen />} />
       <Route path="/qr/scan" element={<QrScanScreen />} />
+
+      {/* Legacy compat routes */}
+      {legacyRoutes.map((route, index) => (
+        <Route key={index} path={route.path} element={route.element} />
+      ))}
 
       {/* 404 */}
       <Route path="*" element={<NotFoundScreen />} />

@@ -1,5 +1,5 @@
-import { Container } from "@/shared/ui/Container";
+import { Navigate } from "react-router-dom";
 
 export function MeHubScreen() {
-  return <Container title="マイページ" />;
+  return <Navigate to="/me/profile" replace />;
 }
