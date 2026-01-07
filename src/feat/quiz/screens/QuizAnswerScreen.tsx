@@ -12,7 +12,10 @@ export function QuizAnswerScreen() {
     explanation: "これは正解の説明です",
   };
 
-  const nextQuestion = parseInt(questionNo || "1") + 1;
+  const currentQuestionNo = parseInt(questionNo || "1");
+  const nextQuestion = currentQuestionNo + 1;
+  const totalQuestions = 5; // TODO: Get from API/state
+  const hasMoreQuestions = currentQuestionNo < totalQuestions;
 
   return (
     <Container title="回答結果">
@@ -24,12 +27,15 @@ export function QuizAnswerScreen() {
           <Text>{result.explanation}</Text>
         </Card>
 
-        <Button size="lg" onClick={() => navigate(`/events/${eventId}/quiz/${nextQuestion}`)}>
-          次の問題へ
-        </Button>
-        <Button size="lg" variant="light" onClick={() => navigate(`/events/${eventId}/result`)}>
-          結果を見る
-        </Button>
+        {hasMoreQuestions ? (
+          <Button size="lg" onClick={() => navigate(`/events/${eventId}/quiz/${nextQuestion}`)}>
+            次の問題へ
+          </Button>
+        ) : (
+          <Button size="lg" onClick={() => navigate(`/events/${eventId}/result`)}>
+            結果を見る
+          </Button>
+        )}
         <Button size="lg" variant="subtle" onClick={() => navigate(`/events/${eventId}`)}>
           ロビーに戻る
         </Button>

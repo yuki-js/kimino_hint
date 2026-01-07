@@ -1,8 +1,9 @@
 import { Container } from "@/shared/ui/Container";
-import { Button, Stack, Text, Card, Loader, Center, Group } from "@mantine/core";
+import { Button, Stack, Text, Loader, Center } from "@mantine/core";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { apis } from "@/shared/api/client";
+import { FriendshipCard } from "../../profiles/components/FriendshipCard";
 
 export function ReceivedFriendshipsScreen() {
   const navigate = useNavigate();
@@ -53,28 +54,11 @@ export function ReceivedFriendshipsScreen() {
           <Text c="dimmed" ta="center">まだプロフィールカードがありません</Text>
         ) : (
           friendships.map((friendship) => (
-            <Card
+            <FriendshipCard
               key={friendship.id}
-              shadow="sm"
-              padding="lg"
-              radius="md"
-              withBorder
-              style={{ cursor: "pointer" }}
+              friendship={friendship}
               onClick={() => navigate(`/profiles/${friendship.senderUserId}`)}
-            >
-              <Group justify="space-between">
-                <div>
-                  <Text fw={500}>
-                    {friendship.senderProfile?.profileData?.displayName || "名前未設定"}
-                  </Text>
-                  {friendship.senderProfile?.profileData?.tagline && (
-                    <Text size="sm" c="dimmed">
-                      {friendship.senderProfile.profileData.tagline}
-                    </Text>
-                  )}
-                </div>
-              </Group>
-            </Card>
+            />
           ))
         )}
         <Button size="lg" variant="light" onClick={() => navigate("/qr/scan")}>
